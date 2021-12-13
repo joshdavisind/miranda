@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  creationTimestamp: null
+  namespace: default
+  labels:
+    io.kompose.service: hajimari-config
+  name: hajimari-config
+spec:
+  capacity:
+    storage: 2Gi	
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /mnt/shares/media/dynamic/hajimari/config/
+    server: 192.168.4.11  
+status: {}
